@@ -18,4 +18,12 @@ class DataBase
   {
     return $req = $this->db->query('SELECT * FROM news');
   }
+
+  public function queryOne($id)
+  {
+    $requete = $this->db->prepare('SELECT id, auteur, titre, chapo, contenu FROM news WHERE id = :id');
+    $requete->bindValue(':id', (int) $id, PDO::PARAM_INT);
+    $requete->execute();
+    return $requete;
+  }
 }

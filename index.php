@@ -4,7 +4,8 @@
 
  $db = DataBase::getMysqlConnexionWithPDO();
  $manager = new Database($db);
- $req = $manager->query();
+ $id = 54;
+ $req = $manager->queryOne($id);
  ?>
 
  <!DOCTYPE html>
@@ -24,6 +25,7 @@
  			</h3>
  			<em><?php echo "Rédiger par " .$donnees['auteur']; ?></em>
  			<p><?php echo $donnees['chapo'];?></p>
+ 			<p><?php echo $donnees['contenu'];?></p>
  		</div>
  		<?php }
  		$req->closeCursor();
