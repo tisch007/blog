@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Geek de Montagne, votre guide dans les Alpes</title>
+	<meta charset="utf-8">
+	<link href="vues/assets/css/bootstrap.css" rel="stylesheet"/>
+	<link rel="stylesheet" href="vues/style.css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> 
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<?php include 'include/header.php' ?> 
+	<?php include 'include/menu.php' ?> 
+</br>
+<p>      
+	<?php
+	foreach ($resultat as $news) {
+		echo '<div>
+		<h3>' . $news->getTitre() . '</h3>
+		<em> Rédigé par ' . $news->getAuteur() . '</em>
+		<p>' . $news->getChapo();
+		if($uniqueNews == 1)
+		{		// affiche le contenu s'il n'y a qu un seul article
+			echo '</br>' . $news->getContenu();
+			echo '</p><a href="index.php?page=supprimer&id='. $news->getId(). '">Supprimer l\'article</a></br></div>';
+			echo '</p><a href="index.php?page=modifier&id='. $news->getId(). '">Modifier l\'article</a></br></div>';
+		}
+		else
+		{	// affiche le contenu quand tous les articles sont demendés
+			echo '</p><a href="index.php?page=article&id='. $news->getId(). '">Lire l\'article</a></br></div>';
+		}
+	}
+	?>
+</p>
+<?php include 'include/footer.php' ?> 
+</body>
+</html>
