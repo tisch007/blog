@@ -32,4 +32,9 @@ class PostModel{
 		}
 		return $posts;
 	}
-}
+
+	public function ajouterNews($dataBase, $post){
+		$sql = 'INSERT INTO news (auteur, titre, chapo, contenu, dateAjout) VALUES (:auteur, :titre, :chapo, :contenu, NOW())'; 
+		$tab = [':auteur' => $post->getAuteur(), ':titre' => $post->getTitre(), ':chapo' => $post->getChapo(), ':contenu' => $post->getContenu()];
+		return $dataBase->execSql($sql, $tab);
+	}
