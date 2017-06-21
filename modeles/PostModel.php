@@ -36,7 +36,6 @@ class PostModel{
 		return $posts;
 	}
 
-
 	public function modifierNews($dataBase, $post){
 		$sql = 'UPDATE news SET auteur = :auteur, titre = :titre, chapo = :chapo, contenu = :contenu, dateAjout = NOW() WHERE id = :id';
 		$tab = [':auteur' => $post->getAuteur(), ':titre' => $post->getTitre(), ':chapo' => $post->getChapo(), ':contenu' => $post->getContenu(), 'id' => $post->getId()];
@@ -49,6 +48,7 @@ class PostModel{
 		return $dataBase->execSql($sql, $tab);
 	}
 
+
 	public function supprimerNews($dataBase, $id){
 		$sql = 'DELETE FROM news WHERE :id=id';
 		$id = intval($id);
@@ -56,3 +56,5 @@ class PostModel{
 		return $dataBase->execSql($sql, $tab);
 	}
 }
+
+
