@@ -52,6 +52,3 @@ class PostModel{
 		$tab = [':auteur' => $post->getAuteur(), ':titre' => $post->getTitre(), ':chapo' => $post->getChapo(), ':contenu' => $post->getContenu(), 'id' => $post->getId()];
 		return $dataBase->execSql($sql, $tab);//résultat est un booleen qui indique la réucite de la requete
 	}
-
-
-}
