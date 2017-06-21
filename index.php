@@ -1,35 +1,18 @@
- <?php 
+<?php
+require 'autoload.php';//charge toutes les classes utilisé
 
- require 'Database.php';
+$db = SqlConnexion::getMysqlConnexionWithPDO();//crée une connexion a la base de donnée
+$dataBase = new DataBase($db);//nouvelle objet database
+$postModel = new PostModel;//nouvelle objet postmodel
 
- $db = DataBase::getMysqlConnexionWithPDO();
- $manager = new Database($db);
- $id = 54;
- $req = $manager->queryOne($id);
- ?>
+//On inclut le fichier s'il existe et s'il est spécifié
+if (!empty($_GET['page']) && is_file('controleurs/'.$_GET['page'].'.php'))
+{
+        include 'controleurs/'.$_GET['page'].'.php';
+}
+else
+{
+        include 'controleurs/accueil.php';
+}
 
- <!DOCTYPE html>
- <html>
- <head>
- 	<title>Accueil du site</title>
- 	<meta charset="utf-8" />
- </head>
- <body>
- <p>    	 
- 	<?php
- 	while ($donnees = $req->fetch()){
- 		?>
- 		<div>
- 			<h3>
- 				<?php echo $donnees['titre']; ?>
- 			</h3>
- 			<em><?php echo "Rédiger par " .$donnees['auteur']; ?></em>
- 			<p><?php echo $donnees['chapo'];?></p>
- 			<p><?php echo $donnees['contenu'];?></p>
- 		</div>
- 		<?php }
- 		$req->closeCursor();
- 		?>
- 	</p>
- </body>
- </html>
+?>
