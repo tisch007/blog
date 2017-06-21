@@ -22,6 +22,7 @@
 		if($uniqueNews == 1)
 		{		// affiche le contenu s'il n'y a qu un seul article
 			echo '</br>' . $news->getContenu();
+			echo '</p><a href="index.php?page=supprimer&id='. $news->getId(). '">Supprimer l\'article</a></br></div>';
 		}
 		else
 		{	// affiche le contenu quand tous les articles sont demendés

@@ -38,3 +38,12 @@ class PostModel{
 		$tab = [':auteur' => $post->getAuteur(), ':titre' => $post->getTitre(), ':chapo' => $post->getChapo(), ':contenu' => $post->getContenu()];
 		return $dataBase->execSql($sql, $tab);
 	}
+
+		public function supprimerNews($dataBase, $id){
+		$sql = 'DELETE FROM news WHERE :id=id';
+		$id = intval($id);
+		$tab = [':id' => $id];
+		return $dataBase->execSql($sql, $tab);
+	}
+
+}
