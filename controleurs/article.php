@@ -12,5 +12,8 @@ else
 	$resultat = $postModel->getAllNews($dataBase);
 }
 
-include 'vues/article.phtml';
+echo $twig->render('article.html.twig', array(
+        'resultat' => $resultat,
+        'uniqueNews' => $uniqueNews
+    ));
 

@@ -9,4 +9,10 @@ else
 	echo 'erreur sur l\'ID';
 }
 
-include 'vues/modifier.phtml';
+ echo $twig->render('modifier.html.twig', array(
+        'id' => $_GET['id'],
+        'Auteur' => $resultat[0]->getAuteur(),
+        'Titre' => $resultat[0]->getTitre(),
+        'Chapo' => $resultat[0]->getChapo(),
+        'Contenu' => $resultat[0]->getContenu()
+    ));

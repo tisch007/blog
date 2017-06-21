@@ -1,0 +1,47 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+	<div class="row">
+	{% for news in resultat %} 	
+		{% if uniqueNews == 0 %}
+			<div class="col-lg-4 article">
+				<h2>{{news.getTitre() }} </h2>
+				<em> Rédigé par {{ news.getAuteur() }} le {{ news.getDateAjout() }}</em>
+				<p> {{ news.getChapo()}}
+				</p><a href="index.php?page=article&id= {{ news.getId() }}" class="btn" >Lire l'article</a></br></br>
+			</div>
+		{% else %}
+			<div class="col-lg-12">	
+				<div class="article2">
+					<h2>{{news.getTitre() }} </h2>
+					<em> Rédigé par {{ news.getAuteur() }} le {{ news.getDateAjout() }}</em>
+					<p> {{ news.getChapo()}}
+					</br> {{ news.getContenu() }}</br></br>
+					</p><a href="index.php?page=modifier&id= {{ news.getId() }} " class="btn">Modifier l'article</a>
+					<a href="index.php?page=supprimer&id= {{ news.getId() }} " class="btn">Supprimer l'article</a></br></br></div>
+
+					<div class="addCommentaire">
+					<h3>Ajouter un commentaire :</h2> 
+					<FORM method="post" action="index.php?page=addCommentaire&id= {{ news.getId() }} ">
+					<label>Votre pseudo</label> : </br><input type="text" name="auteur" required/></br>
+					<label>Votre commentaire</label> :</br> <TEXTAREA name="contenu" rows=2 cols=100 wrap=physical placeholder="Rédiger votre commentaire ici" required  /></TEXTAREA></br></br>
+					<INPUT TYPE="submit" NAME="ajouterCommentaire" VALUE=" Envoyer "   class="btn">
+					</FORM>
+					</br>
+					</div>
+					{% if news.getCommentaireTableau() %}
+						{% for com in news.getCommentaireTableau() %} 
+							<div class="commentaire">						
+								{{ com.getContenu() }}
+								</br>
+								<em>Rédigé par : {{ com.getAuteur() }} le {{ com.getDateAjout() }}</em>
+								</br>
+							</div>
+						{% endfor %}
+					{% endif %}
+				</div>
+			</div>
+		{% endif %}
+	{% endfor %}
+	</div>
+{% endblock %}

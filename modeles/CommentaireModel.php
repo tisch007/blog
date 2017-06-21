@@ -16,7 +16,7 @@ class CommentaireModel{
 	}
 
 	public function getAllCommentaire($dataBase, $id){
-		$requetCommentaire = 'SELECT * FROM commentaire WHERE numPost = :id ORDER BY dateAjout DESC';
+		$requetCommentaire = 'SELECT id, numPost, auteur, contenu, DATE_FORMAT(dateAjout, \'%d/%m/%Y à %Hh%i\') AS dateAjout FROM commentaire WHERE numPost = :id ORDER BY dateAjout DESC';
 		$id = intval($id);
 		$tab = [':id' => $id];
 		$resultatCommentaire = $dataBase->query($requetCommentaire, $tab);//récupère les commentaires du post
