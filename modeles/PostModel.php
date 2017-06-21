@@ -48,7 +48,6 @@ class PostModel{
 		return $dataBase->execSql($sql, $tab);
 	}
 
-
 	public function supprimerNews($dataBase, $id){
 		$sql = 'DELETE FROM news WHERE :id=id';
 		$id = intval($id);
@@ -56,5 +55,3 @@ class PostModel{
 		return $dataBase->execSql($sql, $tab);
 	}
 }
-
-

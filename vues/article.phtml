@@ -24,6 +24,27 @@
 			echo '</br>' . $news->getContenu();
 			echo '</p><a href="index.php?page=supprimer&id='. $news->getId(). '">Supprimer l\'article</a></br></div>';
 			echo '</p><a href="index.php?page=modifier&id='. $news->getId(). '">Modifier l\'article</a></br></div>';
+			?>
+
+			<div class="addCommentaire">
+				<h3>Ajouter un commentaire :</h2> 
+				<FORM method="post" action="index.php?page=addCommentaire&id=<?php echo $news->getId()?>">
+				<label>Votre pseudo</label> : </br><input type="text" name="auteur" required/></br>
+				<label>Votre commentaire</label> :</br> <TEXTAREA name="contenu" rows=2 cols=100 wrap=physical placeholder="Rédiger votre commentaire ici" required  /></TEXTAREA></br></br>
+				<INPUT TYPE="submit" NAME="ajouterCommentaire" VALUE=" Envoyer "   class="btn">
+				</FORM>
+				</br>
+				</div>
+				<?php
+				if(!empty($news->getCommentaireTableau()))
+				{	
+
+					foreach ($news->getCommentaireTableau() as $com)
+					{ 
+					
+						echo $com->getContenu().'</br><em> Rédigé par : '.$com->getAuteur().'</em></br></br>';
+					}
+				}
 		}
 		else
 		{	// affiche le contenu quand tous les articles sont demendés
