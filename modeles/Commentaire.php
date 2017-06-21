@@ -1,15 +1,12 @@
 <?php
 
-class Post{
-
+class Commentaire{
 
 	private $id;
+	private $numPost;
 	private $auteur;
-	private $titre;
-	private $chapo;
 	private $contenu;
 	private $dateAjout;
-	private $commentaireTableau;
 
 	public function __construct($valeurs = [])
 	{
@@ -31,28 +28,21 @@ class Post{
 		}
 	}
 
-
 	/* SETTERS */
 	public function setId($id)
 	{
 		$this->id = $id;
 	}
 
+	public function setNumPost($numPost)
+	{
+		$this->numPost = $numPost;
+	}
+
 	public function setAuteur($auteur)
 	{
 		$this->auteur = $auteur;
 	}
-
-	public function setTitre($titre)
-	{
-		$this->titre = $titre;
-	}
-
-	public function setChapo($chapo)
-	{
-		$this->chapo = $chapo;
-	}
-
 	
 	public function setContenu($contenu)
 	{
@@ -64,25 +54,15 @@ class Post{
 		$this->dateAjout = $dateAjout;
 	}
 
-	public function setCommentaireTableau($commentaireTableau)
-	{
-		$this->commentaireTableau = $commentaireTableau;
-	}
-
 	/* GETTERS */
 	public function getId()
 	{
 		return $this->id;
 	}
 
-	public function getTitre()
+	public function getNumPost()
 	{
-		return $this->titre;
-	}
-
-	public function getChapo()
-	{
-		return $this->chapo;
+		return $this->numPost;
 	}
 
 	public function getAuteur()
@@ -98,10 +78,5 @@ class Post{
 	public function getDateAjout()
 	{
 		return $this->dateAjout;
-	}
-
-	public function getCommentaireTableau()
-	{
-		return $this->commentaireTableau;
 	}
 }

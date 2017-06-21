@@ -2,7 +2,7 @@
 
 if(!empty($_GET['id']) && is_numeric($_GET['id']))
 {
-	$resultat = $postModel->getOneNews($dataBase, $_GET['id']);
+	$resultat = $postModel->getOneNews($dataBase, $_GET['id'], $commentaireModel);
 }
 else
 {

@@ -3,6 +3,7 @@
 if(!empty($_GET['id']) && is_numeric($_GET['id']))
 {
 	$postModel->supprimerNews($dataBase, $_GET['id']);
+	$commentaireModel->supprimerCommentaire($dataBase, $_GET['id']);
 }
 else
 {
