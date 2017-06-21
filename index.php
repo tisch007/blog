@@ -14,5 +14,4 @@ else
 {
         include 'controleurs/accueil.php';
 }
-
 ?>
