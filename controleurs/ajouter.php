@@ -1,3 +1,3 @@
 <?php
 
-include 'vues/ajouter.phtml';
+echo $twig->render('ajouter.html.twig');
