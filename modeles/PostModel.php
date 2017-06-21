@@ -38,7 +38,3 @@ class PostModel{
 		$tab = [':auteur' => $post->getAuteur(), ':titre' => $post->getTitre(), ':chapo' => $post->getChapo(), ':contenu' => $post->getContenu()];
 		return $dataBase->execSql($sql, $tab);
 	}
-
-	
-
-}
