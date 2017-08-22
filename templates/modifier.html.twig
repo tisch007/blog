@@ -2,7 +2,7 @@
 
 {% block content %}
 	<div class="modifier">
-		<FORM method="post" action= "index.php?page=update&id= {{ id }} ">
+		<FORM method="post" action= "{{ id }}">
 			<label>Votre pseudo</label> : </br><input type="text" name="auteur" required value="{{ Auteur }} "/></br>
 			<label>Votre titre</label> : </br><input type="text" name="titre" size="50" required value="{{ Titre }}"/></br>
 			<label>Votre chapo</label> :</br> <TEXTAREA name="chapo" rows=5 cols=200 wrap=physical class="textarea" required value="test">{{ Chapo }}</TEXTAREA></br>
